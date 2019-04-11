@@ -8,7 +8,7 @@
 #define TEMPS_DE_REACTION 200
 #define CHANCE 80//SUR 100
 
-int random(int a, int b,int c){
+int IArandom(int a, int b,int c){
     SDL_Delay(1);
     srand(c);
     int r =rand()%b+a;
@@ -50,7 +50,7 @@ int LowEventIA(Raquette *pRaquette,Ball *pball) {
     } else if(pball->dirx <0){
 
         int nombreAleatoire = 0;
-        nombreAleatoire = random(0,100,pball->y * pball->x);
+        nombreAleatoire = IArandom(0,100,pball->y * pball->x);
         printf("number [%d] \n",nombreAleatoire);
         if(nombreAleatoire < CHANCE){
             if (centreDaLaRaquette > centreDeLaBall){
