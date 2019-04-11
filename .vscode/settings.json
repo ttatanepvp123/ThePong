@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "loadmenutextures.h": "c",
+        "struct.h": "c",
+        "stdio.h": "c",
+        "windows.h": "c",
+        "sdl.h": "c",
+        "updategame.h": "c",
+        "loadtextures.h": "c",
+        "stdlib.h": "c",
+        "menubouton.h": "c",
+        "define.h": "c",
+        "sdl_mixer.h": "c",
+        "initgame.h": "c",
+        "sound.h": "c",
+        "events.h": "c",
+        "systemlog.h": "c",
+        "menurender.h": "c",
+        "network.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
