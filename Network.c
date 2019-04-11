@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #include "Network.h"
 
 Socket initSocket(Socket sok) {
@@ -75,3 +76,5 @@ void askServer(Keyboard *pKeyboard,Raquette *pRaquette1,Raquette *pRaquette2,Bal
     pRaquette2->y = tInfoPaquet[7];
     printf("finboucle \n");
 }
+
+#endif

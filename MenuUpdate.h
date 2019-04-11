@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
-#include "struct.h"
+#include "Struct.h"
 #include "define.h"
 
 
