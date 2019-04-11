@@ -16,7 +16,10 @@
         "events.h": "c",
         "systemlog.h": "c",
         "menurender.h": "c",
-        "network.h": "c"
+        "network.h": "c",
+        "menuupdate.h": "c",
+        "rendergame.h": "c",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
