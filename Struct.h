@@ -2,8 +2,10 @@
 #define STRUCT_H_INCLUDED
 
 
-#include "include/SDL2/SDL.h"
-#include<winsock2.h>
+#include <SDL2/SDL.h>
+#ifdef _WIN32
+#include <winsock2.h>
+#endif
 
 
 typedef struct Screen {
@@ -162,6 +164,7 @@ enum enumMenuClics {
     MENU_OPTIONS_BACK
 };
 
+#ifdef _WIN32
 typedef struct Socket {
     int needInit;
     struct sockaddr_in si_other;
@@ -169,5 +172,6 @@ typedef struct Socket {
     int slen;
     WSADATA wsa;
 } Socket;
+#endif
 
 #endif // STRUCT_H_INCLUDED

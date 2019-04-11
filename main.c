@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "include/SDL2/SDL.h"
-#include "include/SDL2/SDL_mixer.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 /*INITIALISATIONS*/
 #include "define.h"
@@ -100,9 +100,11 @@ int main(int argc, char** argv) {
     Keyboard keyboard = {0};
     Keyboard *pKeyboard = &keyboard;
 
+    #ifdef _WIN32
     //Socket pour multijoueur (initialisation "needInit" à true)
     Socket sokt;
     sokt.needInit = 1;
+    #endif
 
     //Variables pour fonctionnement boucles
     int loopMenu = 1;
@@ -212,7 +214,7 @@ int main(int argc, char** argv) {
 
         //Demarrage du jeu
         if (loopGame) {
-            SDL_SetWindowsFullscreen(pWindows);
+            // SDL_SetWindowsFullscreen(pWindows);
 
 
 
@@ -235,10 +237,11 @@ int main(int argc, char** argv) {
             pKeyboard->ArrowDown = 0;
             pKeyboard->ArrowUp = 0;
             pKeyboard->Keyz = 0;
-            pKeyboard->Keys = 0;
-
+            pKeyboard->Keys = 0; 
+            #ifdef HJBHBDFFDJ
             //Initialisation du socket (si ce n'est pas déjà fait)
             if (modeMulti && sokt.needInit) sokt = initSocket(sokt);
+            #endif
 
             WriteLogPong("Log : Fonction Executed : InitGame", 0, 0);
             InitGame(pRaquette1,pRaquette2,pBalle,0);
@@ -260,7 +263,9 @@ int main(int argc, char** argv) {
 
                 //Update fait en local si solo, par serveur en multi
                 if (modeMulti) {
+                    #ifdef _WIN32
                     askServer(pKeyboard,pRaquette1,pRaquette2,pBalle,deltaTime,sokt);
+                    #endif
                 }
                 else {
                     if (updateTimer>=UPDATE_TIMER) {
