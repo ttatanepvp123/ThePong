@@ -240,7 +240,7 @@ int main(int argc, char** argv) {
             pKeyboard->ArrowUp = 0;
             pKeyboard->Keyz = 0;
             pKeyboard->Keys = 0; 
-            #ifdef HJBHBDFFDJ
+            #ifdef _WIN32
             //Initialisation du socket (si ce n'est pas déjà fait)
             if (modeMulti && sokt.needInit) sokt = initSocket(sokt);
             #endif
