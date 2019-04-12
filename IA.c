@@ -6,16 +6,12 @@
 
 #define TEMPS_DE_BUG 2
 #define TEMPS_DE_REACTION 200
-#define CHANCE 80//SUR 100
+#define CHANCE 85//SUR 100
 
-int IArandom(int a, int b,int c){
+int IArandom(int a, int b){
     SDL_Delay(1);
-    srand(c);
-    int r =rand()%b+a;
-    return r;
+    return rand()%b+a;
 }
-
-int LowEventIA(Raquette *pRaquette,Ball *pball);
 
 int HardEventIA(Raquette *pRaquette,Ball *pball) {
     float centreDeLaBall = (pball->h / 2) + pball->y;
@@ -50,7 +46,7 @@ int LowEventIA(Raquette *pRaquette,Ball *pball) {
     } else if(pball->dirx <0){
 
         int nombreAleatoire = 0;
-        nombreAleatoire = IArandom(0,100,pball->y * pball->x);
+        nombreAleatoire = IArandom(0,100);
         printf("number [%d] \n",nombreAleatoire);
         if(nombreAleatoire < CHANCE){
             if (centreDaLaRaquette > centreDeLaBall){

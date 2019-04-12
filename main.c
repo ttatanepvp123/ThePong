@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
@@ -40,6 +41,7 @@ int main(int argc, char** argv) {
     Screen Scr = {800,600,1};
     Screen *pScr = &Scr;
 
+    srand(time(NULL));
 
     //Init generale SDL
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0){
