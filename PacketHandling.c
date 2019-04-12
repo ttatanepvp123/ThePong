@@ -42,7 +42,6 @@ void DecodePacket(float tInfoPaquet[], char paquet[],int packetMaxSize) {
 
         //Fin du paquet
         if (currentChar == '\0') {
-            printf("Fin",tmpBufer);
             break;
         }
     }
