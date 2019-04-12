@@ -20,17 +20,17 @@ int LowEventIA(Raquette *pRaquette,Ball *pball);
 int HardEventIA(Raquette *pRaquette,Ball *pball) {
     float centreDeLaBall = (pball->h / 2) + pball->y;
     float centreDaLaRaquette = (pRaquette->h / 2) + pRaquette->y;
-    printf("centreDeLaBall %f // centreDaLaRaquette %f\n",pRaquette->y, pRaquette->h);
+    printf("centreDeLaBall %f // centreDaLaRaquette %f\n",centreDeLaBall, centreDaLaRaquette);
 
 
     if (centreDaLaRaquette > centreDeLaBall){
-        printf("input [%d] [%d] output [1]\n",centreDeLaBall, centreDeLaBall);
+        printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
         return 1;
     } else if (centreDaLaRaquette < centreDeLaBall){
-        printf("input [%d] [%d] output [2]\n",centreDeLaBall, centreDeLaBall);
+        printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
         return 2;
     } else {
-        printf("input [%d] [%d] output [0]\n",centreDeLaBall, centreDeLaBall);
+        printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
         return 0;
     }
 }
@@ -54,34 +54,34 @@ int LowEventIA(Raquette *pRaquette,Ball *pball) {
         printf("number [%d] \n",nombreAleatoire);
         if(nombreAleatoire < CHANCE){
             if (centreDaLaRaquette > centreDeLaBall){
-                //printf("input [%d] [%d] output [1]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 1;
                 return 1;
             } else if (centreDaLaRaquette < centreDeLaBall){
-                //printf("input [%d] [%d] output [2]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 2;
                 return 2;
             } else {
-                //printf("input [%d] [%d] output [0]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 0;
                 return 0;
             }
         } else if(nombreAleatoire > CHANCE){
             if (centreDaLaRaquette > centreDeLaBall){
-                //printf("input [%d] [%d] output [1]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_BUG;
                 direction = 2;
                 return 2;
             } else if (centreDaLaRaquette < centreDeLaBall){
-                //printf("input [%d] [%d] output [2]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_BUG;
                 direction = 1;
                 return 1;
             } else {
-                //printf("input [%d] [%d] output [0]\n",centreDeLaBall, centreDeLaBall);
+                printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
                 if(nombreAleatoire == 19){
                     temps = TEMPS_DE_BUG;
                     direction = 1;
