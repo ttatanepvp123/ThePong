@@ -30,7 +30,6 @@
 //chemin des son 
 #define PATH_FX_BALLTOPAD "Audio/ballToPad.wav"
 #define PATH_MUSIC_1 "Audio/MusicToGoodGame.wav"
-#define PATH_SECRET_MODE "Audio/SecretModeSound.wav"
 //EVENT Balle
 #define EVENT_COLLISION_RAQUETTE 1
 

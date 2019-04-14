@@ -130,10 +130,7 @@ int main(int argc, char** argv) {
      * Pour le fichier MenuBouton.c ligne ~40~
      */
 
-    sound_MusicPlay(sound_addMusic(PATH_MUSIC_1));
-
-    int secretModeSound = sound_addFX(PATH_SECRET_MODE);
-
+    // sound_MusicPlay(sound_addMusic(PATH_MUSIC_1));
 
     //Boucle generale
     while (loopMenu) {
