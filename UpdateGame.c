@@ -13,65 +13,74 @@ void UpdateGame(Keyboard *pKeyboard,Raquette *pRaquette1,Raquette *pRaquette2,Ba
 }
 
 void UpdatePad1(Keyboard *pKeyboard,Ball *pBalle,Raquette *pRaquette1,Uint32 deltaTime,int mode) {
+    int tmp = 0;
     if (mode == 1){//MODE BOT HARD
-        if (HardEventIA(pRaquette1,pBalle) == 1 && pRaquette1->y>=0) {
-        pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
-        }
-        if (HardEventIA(pRaquette1,pBalle) == 2 && pRaquette1->y+pRaquette1->h<=1) {
+        tmp = HardEventIA(pRaquette1,pBalle);
+        if (tmp == 1 && pRaquette1->y>=0) {
+            pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
+        } else if (tmp == 2 && pRaquette1->y+pRaquette1->h<=1) {
             pRaquette1->y += pRaquette1->speed*deltaTime/1000;
         }
     } else if (mode == 2){//MODE BOT LOW
-        if (LowEventIA(pRaquette1,pBalle) == 1 && pRaquette1->y>=0) {
-        pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
-        }
-        if (LowEventIA(pRaquette1,pBalle) == 2 && pRaquette1->y+pRaquette1->h<=1) {
+        tmp = LowEventIA(pRaquette1,pBalle);
+        if (tmp == 1 && pRaquette1->y>=0) {
+            pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
+        } else if (tmp == 2 && pRaquette1->y+pRaquette1->h<=1) {
             pRaquette1->y += pRaquette1->speed*deltaTime/1000;
         }
     } else {//MODE PLAYE
         if (pKeyboard->Keyz && pRaquette1->y>=0) {
-        pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
-        }
-        if (pKeyboard->Keys && pRaquette1->y+pRaquette1->h<=1) {
+            pRaquette1->y -= pRaquette1->speed*deltaTime/1000;
+            printf("[ PLAYER 1 ] : up\n");
+        } else if (pKeyboard->Keys && pRaquette1->y+pRaquette1->h<=1) {
             pRaquette1->y += pRaquette1->speed*deltaTime/1000;
+            printf("[ PLAYER 1 ] : down\n");
+        } else {
+            printf("[ PLAYER 1 ] : waiting\n");
         }
     }
 
     //Debug Option
-        if(pKeyboard->Keyi){
-            pRaquette1->speed ++;
-        }
+    if(pKeyboard->Keyi){
+        pRaquette1->speed ++;
+    }
 
-        if(pKeyboard->Keyk){
-            pRaquette1->speed --;
-        }
+    if(pKeyboard->Keyk){
+        pRaquette1->speed --;
+    }
 
-        if(pKeyboard->Keyl){
-            pRaquette1->speed = PAD_SPEED;
-        }
+    if(pKeyboard->Keyl){
+        pRaquette1->speed = PAD_SPEED;
+    }
 }
 
 void UpdatePad2(Keyboard *pKeyboard,Ball *pBalle,Raquette *praquette2,Uint32 deltaTime,int mode) {
+    int tmp = 0;
     if (mode == 1){//MODE BOT HARD
-        if (HardEventIA(praquette2,pBalle) == 1 && praquette2->y>=0) {
-        praquette2->y -= praquette2->speed*deltaTime/1000;
-        }
-        if (HardEventIA(praquette2,pBalle) == 2 && praquette2->y+praquette2->h<=1) {
+        tmp = HardEventIA(praquette2,pBalle);
+        if (tmp == 1 && praquette2->y>=0) {
+            praquette2->y -= praquette2->speed*deltaTime/1000;
+        } else if (tmp == 2 && praquette2->y+praquette2->h<=1) {
             praquette2->y += praquette2->speed*deltaTime/1000;
         }
     } else if (mode == 2){//MODE BOT LOW
-        if (LowEventIA(praquette2,pBalle) == 1 && praquette2->y>=0) {
-        praquette2->y -= praquette2->speed*deltaTime/1000;
-        }
-        if (LowEventIA(praquette2,pBalle) == 2 && praquette2->y+praquette2->h<=1) {
+        tmp = LowEventIA(praquette2,pBalle);
+        if (tmp == 1 && praquette2->y>=0) {
+            praquette2->y -= praquette2->speed*deltaTime/1000;
+        } else if (tmp == 2 && praquette2->y+praquette2->h<=1) {
             praquette2->y += praquette2->speed*deltaTime/1000;
         }
     } else {//MODE PLAYE
         if (pKeyboard->ArrowUp && praquette2->y>=0) {
-        praquette2->y -= praquette2->speed*deltaTime/1000;
-        }
-        if (pKeyboard->ArrowDown && praquette2->y+praquette2->h<=1) {
+            printf("[ PLAYER 2 ] : up\n");
+            praquette2->y -= praquette2->speed*deltaTime/1000;
+        } else if (pKeyboard->ArrowDown && praquette2->y+praquette2->h<=1) {
             praquette2->y += praquette2->speed*deltaTime/1000;
+            printf("[ PLAYER 2 ] : down\n");
+        } else {
+            printf("[ PLAYER 2 ] : waiting\n");
         }
+        
 
         //Debug Option
         if(pKeyboard->Keyi){
@@ -169,6 +178,8 @@ void UpdateBall(Ball *pBalle,Raquette *pRaquette1,Raquette *pRaquette2,Keyboard 
     if(pKeyboard->Keyh){
         pBalle->speed = BALL_SPEED;
     }
+    printf("[ BALL ] : [%f,%f]\n", pBalle->dirx, pBalle->diry);
+    printf("[ BALL ] : [%f,%f]\n", pBalle->x, pBalle->y);
 }
 
 int RectCollision(Raquette *pRaquette,Ball *pBalle) {

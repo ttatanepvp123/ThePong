@@ -254,6 +254,9 @@ int main(int argc, char** argv) {
 
             deltaTime = Timer(deltaTime);
             while (loopGame) {
+                #ifdef __unix__
+                printf("\e[1;1H\e[2J");
+                #endif
                 pauseTimer = 0;
                 loopGame = EventsGame(pKeyboard,pMouse,pScr);
 

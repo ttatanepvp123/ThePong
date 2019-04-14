@@ -16,19 +16,17 @@ int IArandom(int a, int b){
 int HardEventIA(Raquette *pRaquette,Ball *pball) {
     float centreDeLaBall = (pball->h / 2) + pball->y;
     float centreDaLaRaquette = (pRaquette->h / 2) + pRaquette->y;
-    printf("centreDeLaBall %f // centreDaLaRaquette %f\n",centreDeLaBall, centreDaLaRaquette);
-
+    int returner = 0;
 
     if (centreDaLaRaquette > centreDeLaBall){
-        printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
-        return 1;
+        returner = 1;
     } else if (centreDaLaRaquette < centreDeLaBall){
-        printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
-        return 2;
+        returner = 2;
     } else {
-        printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
-        return 0;
+        returner = 0;
     }
+    printf("[ HARD AI ] : [%f,%f] -> %d\n",centreDaLaRaquette ,centreDeLaBall ,returner);
+    return returner;
 }
 
 int LowEventIA(Raquette *pRaquette,Ball *pball) {
@@ -38,59 +36,37 @@ int LowEventIA(Raquette *pRaquette,Ball *pball) {
     float centreDaLaRaquette = pRaquette->h / 2 + pRaquette->y;
     if(temps > 0){
         temps --;
-        if(direction == 1){
-            return 1;
-        } else if(direction == 2){
-            return 2;
-        }
+        printf("[ EASY AI ] : last direction %d\n", direction);
+        return direction;
     } else if(pball->dirx <0){
-
         int nombreAleatoire = 0;
         nombreAleatoire = IArandom(0,100);
-        printf("number [%d] \n",nombreAleatoire);
         if(nombreAleatoire < CHANCE){
             if (centreDaLaRaquette > centreDeLaBall){
-                printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 1;
-                return 1;
             } else if (centreDaLaRaquette < centreDeLaBall){
-                printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 2;
-                return 2;
             } else {
-                printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_REACTION;
                 direction = 0;
-                return 0;
             }
-        } else if(nombreAleatoire > CHANCE){
-            if (centreDaLaRaquette > centreDeLaBall){
-                printf("input [%f] [%f] output [1]\n",centreDeLaBall, centreDeLaBall);
+            printf("[ EASY AI ] : [%f,%f,%d] -> %d\n",centreDaLaRaquette ,centreDeLaBall, nombreAleatoire, direction);
+            return direction;
+        } else {
+            if (centreDaLaRaquette >= centreDeLaBall){
                 temps = TEMPS_DE_BUG;
                 direction = 2;
-                return 2;
             } else if (centreDaLaRaquette < centreDeLaBall){
-                printf("input [%f] [%f] output [2]\n",centreDeLaBall, centreDeLaBall);
                 temps = TEMPS_DE_BUG;
                 direction = 1;
-                return 1;
-            } else {
-                printf("input [%f] [%f] output [0]\n",centreDeLaBall, centreDeLaBall);
-                if(nombreAleatoire == 19){
-                    temps = TEMPS_DE_BUG;
-                    direction = 1;
-                    return 1;
-                }
-
-                if(nombreAleatoire == 20){
-                    temps = TEMPS_DE_BUG;
-                    direction = 2;
-                    return 2;
-                }
             }
+            printf("[ EASY AI ] : [%f,%f,%d] -> %d\n",centreDaLaRaquette ,centreDeLaBall, nombreAleatoire, direction);
+            return direction;
         } 
-
+    } else {
+         printf("[ EASY AI ] : waiting\n");
     }
+    
 }
